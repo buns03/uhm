@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Student</title>
+  <link rel="stylesheet" href="/delete.css">
+</head>
+<body>
+<div class="form-container">
+  <h1>Delete Student</h1>
+  <p><strong>Last Name:</strong> <span th:text="${student.Lname}"></span></p>
+  <p><strong>First Name:</strong> <span th:text="${student.Fname}"></span></p>
+  <p><strong>Middle Name:</strong> <span th:text="${student.Mname}"></span></p>
+  <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+  <p><strong>Age:</strong> <span th:text="${student.age}"></span></p>
+  <p><strong>Year Level:</strong> <span th:text="${student.YrLvl}"></span></p>
+
+  <form th:action="@{/students/delete}" method="post" onsubmit="return confirmDelete();">
+    <input type="hidden" name="id" th:value="${student.id}">
+    <button type="submit">Delete</button>
+  </form>
+  <script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this student?");
+    }
+  </script>
+
+  <a href="/students">Cancel</a>
+</div>
+
+<script>
+  function confirmDelete() {
+      return confirm("Are you sure you want to delete this student?");
+  }
+</script>
+</body>
+</html>

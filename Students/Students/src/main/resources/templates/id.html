@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Student</title>
+    <link rel="stylesheet" href="/id.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Find Student</h1>
+    <form action="/students/find" method="get">
+        <label for="StudentID">Enter Student ID:</label>
+        <input type="number" id="StudentID" name="StudentID" placeholder="Enter Student ID" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="resultContainer">
+        <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+        <div th:if="${student}">
+            <p><strong>Last Name:</strong> <span th:text="${student.Lname}"></span></p>
+            <p><strong>First Name:</strong> <span th:text="${student.Fname}"></span></p>
+            <p><strong>Middle Name:</strong> <span th:text="${student.Mname}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+            <p><strong>Age:</strong> <span th:text="${student.age}"></span></p>
+            <p><strong>Year Level:</strong> <span th:text="${student.YrLvl}"></span></p>
+
+                <form th:action="@{/students/updating}" method="get">
+                    <input type="hidden" name="id" th:value="${student.id}">
+                    <input type="hidden" name="LName" th:value="${student.Lname}">
+                    <input type="hidden" name="FName" th:value="${student.Fname}">
+                    <input type="hidden" name="MName" th:value="${student.Mname}">
+                    <input type="hidden" name="email" th:value="${student.email}">
+                    <input type="hidden" name="age" th:value="${student.age}">
+                    <input type="hidden" name="YrLvl" th:value="${student.YrLvl}">
+                    <form th:action="@{/students/updating}" method="get">
+                        <input type="hidden" name="id" th:value="${student.id}">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form th:action="@{/students/delete}" method="post">
+                        <input type="hidden" name="id" th:value="${student.id}">
+                        <button type="submit" style="background-color: red;">Delete</button>
+                    </form>
+
+                </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

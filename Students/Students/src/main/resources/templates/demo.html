@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="For fun Website">
+    <meta name="Heh" content="HTML codes">
+    <meta name="author" content="ikaw">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Form</title>
+    <!-- Correctly linking to the external CSS file -->
+    <link rel="stylesheet" href="/style.css">
+    <script>
+    // Function to handle form submission
+    function showNextStep(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Hide the form container
+    document.querySelector('.form-container').style.display = 'none';
+
+    // Show the next step section
+    document.getElementById('nextStep').style.display = 'block';
+    }
+    </script>
+</head>
+<body>
+<div class="form-container">
+    <h1>Enrollment</h1>
+    <form action="/students/update" method="post">
+        <label for="LName">Last Name:</label>
+        <input type="text" id="LName" name="LName" th:value="${LName}" placeholder="Enter Last Name" required>
+
+        <label for="FName">First Name:</label>
+        <input type="text" id="FName" name="FName" th:value="${FName}" placeholder="Enter First Name" required>
+
+        <label for="MName">Middle Name:</label>
+        <input type="text" id="MName" name="MName" th:value="${MName}" placeholder="Enter Middle Name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${email}" placeholder="Enter Email" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" th:value="${age}" placeholder="Enter Age" required>
+
+        <label for="YrLvl">Year Level:</label>
+        <select id="YrLvl" name="YrLvl">
+            <option th:value="'1st Year'" th:text="'1st Year'" th:selected="${YrLvl == '1st Year'}"></option>
+            <option th:value="'2nd Year'" th:text="'2nd Year'" th:selected="${YrLvl == '2nd Year'}"></option>
+            <option th:value="'3rd Year'" th:text="'3rd Year'" th:selected="${YrLvl == '3rd Year'}"></option>
+            <option th:value="'4th Year'" th:text="'4th Year'" th:selected="${YrLvl == '4th Year'}"></option>
+        </select>
+
+        <button type="submit">Add Student</button>
+    </form>
+    <p th:text="${message}"></p>
+</div>
+
+<div id="nextStep" style="display: none;">
+    <label for ="LName"> Last Name: </label>
+</div>
+</body>
+</html>

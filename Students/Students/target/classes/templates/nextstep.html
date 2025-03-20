@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="For fun Website">
+    <meta name="Heh" content="HTML codes">
+    <meta name="author" content="ikaw">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Success</title>
+    <link rel="stylesheet" href="/nextstep.css">
+</head>
+<body>
+<div class="next-step-container">
+    <h2 th:text="${message}"></h2> <!-- Show the success message -->
+
+<!--    <p>Your enrollment was successful. Here are the details:</p>-->
+<!--    <ul>-->
+<!--    <li><strong>Last Name:</strong><span th:text="${LName}"></span></li>-->
+<!--    <li><strong>First Name:</strong><span th:text="${FName}"></span></li>-->
+<!--    <li><strong>Middle Name:</strong><span th:text="${MName}"></span></li>-->
+<!--    <li><strong>Email:</strong><span th:text="${email}"></span></li>-->
+<!--    <li><strong>Age:</strong><span th:text="${age}"></span></li>-->
+<!--    <li><strong>Year Level:</strong><span th:text="${YrLvl}"></span></li>-->
+<!--    </ul>-->
+
+    <ul>
+        <li><strong>Last Name:</strong> <span th:text="${LName}"></span></li>
+        <li><strong>First Name:</strong> <span th:text="${FName}"></span></li>
+        <li><strong>Middle Name:</strong> <span th:text="${MName}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${email}"></span></li>
+        <li><strong>Age:</strong> <span th:text="${age}"></span></li>
+        <li><strong>Year Level:</strong> <span th:text="${YrLvl}"></span></li>
+    </ul>
+        <a href="/students/form">Go Back to Form</a>
+</div>
+</body>
+</html>

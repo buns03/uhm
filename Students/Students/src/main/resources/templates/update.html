@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="/update.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Update Student</h1>
+    <form th:action="@{/students/updating}" method="post" onsubmit="return confirmUpdate();">
+        <input type="hidden" name="id" th:value="${student?.id}">
+        <input type="text" name="LName" th:value="${student?.Lname}">
+        <input type="text" name="FName" th:value="${student?.Fname}">
+        <input type="text" name="MName" th:value="${student?.Mname}">
+        <input type="text" name="email" th:value="${student?.email}">
+        <input type="number" name="age" th:value="${student?.age}">
+        <input type="text" name="YrLvl" th:value="${student?.YrLvl}">
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<script>
+    function confirmUpdate() {
+        return confirm("Are you sure you want to update this student?");
+    }
+</script>
+</body>
+</html>
